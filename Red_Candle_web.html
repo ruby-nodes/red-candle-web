@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Candle - Next-Generation Computing Infrastructure</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWTFo9Lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-red: #E74C3C;        /* Bright red for accents */
+            --dark-red: #C0392B;           /* Darker red for hover */
+            --background-dark: #0A0A0A;    /* Almost black for background */
+            --card-dark: #1C1C1C;          /* Dark gray for cards/boxes */
+            --text-light: #E0E0E0;         /* Lighter text for readability */
+            --text-muted: #A0A0A0;         /* Muted text for supplementary info */
+            --border-subtle: #333333;      /* Subtle border */
+
+            /* Fonts */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* ----- Header ----- */
+        header {
+            background-color: var(--background-dark);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        header .main-title {
+            font-family: var(--font-heading);
+            font-size: 4.5em;
+            color: var(--primary-red);
+            margin: 0 0 20px 0;
+            text-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
+            animation: fadeIn 1.2s ease-out;
+            letter-spacing: 2px;
+        }
+
+        header .logo {
+            max-width: 280px;
+            height: auto;
+            margin-bottom: 25px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header h1 {
+            display: none;
+        }
+
+        header .subtitle {
+            font-size: 1.5em;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        header .tagline {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-3px);
+        }
+
+        /* ----- Sections ----- */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.8em;
+            color: var(--primary-red);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-red);
+            margin: 20px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        section p {
+            font-size: 1.05em;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            text-align: justify;
+        }
+
+        /* ----- Services List (original style with modern adjustments) ----- */
+        .services-list {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--text-light);
+        }
+
+        .services-list li::before {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            content: '\f058'; /* Check-circle icon */
+            color: var(--primary-red);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.4em;
+        }
+
+        /* ----- Partner List (Modern style) ----- */
+        .partners-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .partners-list li {
+            background-color: var(--card-dark);
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+            font-size: 1.1em;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease;
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .partners-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+        }
+
+        .partners-list li i {
+            color: var(--primary-red);
+            font-size: 1.6em;
+            margin-right: 20px;
+        }
+
+        /* ----- Contact/Company Info ----- */
+        .contact-details, .company-details {
+            background-color: var(--card-dark);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-details h3, .company-details h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-red);
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+
+        .contact-details p, .company-details p {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: var(--text-light);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .contact-details a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--text-light);
+        }
+
+        .company-details strong {
+            color: var(--primary-red);
+        }
+        .company-details p:first-of-type {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--text-light);
+        }
+
+        /* ----- Animations ----- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+        .fadeIn { animation-name: fadeIn; }
+        .slideInUp { animation-name: slideInUp; }
+
+        /* ----- Responsive Design ----- */
+        @media (max-width: 768px) {
+            header { padding: 40px 0; }
+            header .main-title { font-size: 3.5em; }
+            header .logo { max-width: 220px; }
+            header .subtitle { font-size: 1.3em; }
+            header .tagline { font-size: 1em; }
+
+            section { padding: 50px 0; }
+            section h2 { font-size: 2.2em; margin-bottom: 40px; }
+            section p { font-size: 1em; }
+
+            .services-list li {
+                font-size: 1em;
+                padding-left: 30px;
+            }
+            .services-list li::before {
+                font-size: 1.2em;
+            }
+
+            .partners-list li {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+            .partners-list li i { font-size: 1.4em; }
+
+            .contact-details, .company-details { padding: 25px; margin-top: 30px; }
+            .contact-details h3, .company-details h3 { font-size: 1.8em; }
+            .contact-details p, .company-details p { font-size: 1em; }
+        }
+
+        @media (max-width: 480px) {
+            header .main-title { font-size: 2.8em; }
+            header .logo { max-width: 180px; }
+            header .subtitle { font-size: 1.1em; }
+            header .tagline { font-size: 0.9em; }
+
+            .cta-button { padding: 10px 25px; font-size: 1em; }
+
+            section h2 { font-size: 1.8em; }
+            section h2::after { width: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="main-title animated fadeIn">Red Candle</h1>
+            <img src="Red_Candle_logo.png" alt="Red Candle Logo" class="logo animated fadeIn" style="animation-delay: 0.3s;">
+            <p class="subtitle animated fadeIn" style="animation-delay: 0.6s;">Next-Generation Computing Infrastructure</p>
+            <p class="tagline animated fadeIn" style="animation-delay: 0.9s;">Reliable Operation. Robust Performance. Full Control.</p>
+            <a href="#contact-info" class="cta-button animated slideInUp" style="animation-delay: 1.2s;">Contact Us</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2><i class="fas fa-desktop"></i> What We Do</h2>
+            <p>Red Candle provides technology companies with the foundation for operating computing nodes in a distributed environment. We build and manage infrastructure for projects that require high availability, security, and performance.</p>
+            <p>Our solutions are used by companies in distributed systems development, analytics, data infrastructure, and other technologies that rely on network stability and fast access to computing capacity.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2><i class="fas fa-cogs"></i> Our Services</h2>
+            <ul class="services-list">
+                <li>Operation of servers and computing nodes with guaranteed availability</li>
+                <li>Monitoring and management of physical and network infrastructure</li>
+                <li>Provision of API and data access for partners and developers</li>
+                <li>Support for testing and production deployments</li>
+                <li>Real-time security and operational oversight</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="location">
+        <div class="container">
+            <h2><i class="fas fa-globe-europe"></i> Where We Operate</h2>
+            <p>Our infrastructure is located in data centers in Europe and New Zealand due to network latency, and we connect partners globally. We utilize both our own servers and a hybrid operating model with individual configurations based on client needs.</p>
+        </div>
+    </section>
+
+    <section id="partners">
+        <div class="container">
+            <h2><i class="fas fa-handshake"></i> Who We Work For</h2>
+            <ul class="partners-list">
+                <li><i class="fas fa-code"></i> Development teams and startups building digital services</li>
+                <li><i class="fas fa-network-wired"></i> Companies deploying their own computing or network nodes</li>
+                <li><i class="fas fa-chart-line"></i> Investment groups seeking technical backing for their technology projects</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact-info">
+        <div class="container">
+            <h2><i class="fas fa-envelope"></i> Want to Join or Collaborate with Us?</h2>
+            <div class="contact-details animated slideInUp">
+                <h3>Get in Touch!</h3>
+                <p>Get in touch and we'll be happy to connect with you.</p>
+                <p>Email us at:</p>
+                <p><a href="mailto:redcandle.sro@gmail.com"><i class="fas fa-at"></i> redcandle.sro@gmail.com</a></p>
+            </div>
+
+            <div class="company-details animated slideInUp" style="animation-delay: 0.3s;">
+                <h3><i class="fas fa-info-circle"></i> Company Information</h3>
+                <p><strong>Red Candle s.r.o.</strong></p>
+                <p>ID: 19200307</p>
+                <p>Registered Office: Nové sady 988/2, Staré Brno, 602 00 Brno</p>
+                <p>Executives: Bc. Petr Menšík and Ing. Pavel Kahoun</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Red Candle s.r.o. All rights reserved.</p>
+            <p>Made with ❤️ in Brno.</p>
+        </div>
+    </footer>
+</body>
+</html>
